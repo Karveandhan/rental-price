@@ -1,6 +1,6 @@
 --- 
-title: "YOUR TITLE HERE"
-author: "YOUR NAMES HERE"
+title: "Rental Pricing Analysis"
+author: " Deepesh Dinesh Theruvath Kanhangad, Hari Prasad Renganathan, Karveandhan Palanisamy"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
