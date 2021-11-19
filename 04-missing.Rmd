@@ -68,7 +68,6 @@ else{
 
 ```{r, fig.width=20, fig.height=8}
 
-data <- Metro_ZORI_AllHomesPlusMultifamily_SSA.
 plot_missing(data, percent = TRUE)
 plot_missing(data, percent = FALSE)
 
