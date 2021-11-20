@@ -1,5 +1,6 @@
 ```{r, fig.width=20, fig.height=8}
-
+library(dplyr)
+library(tidyr)
 plot_missing <- function(dataf,percent){
   
   if(sum(is.na(dataf))>0){
