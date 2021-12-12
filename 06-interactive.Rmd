@@ -34,6 +34,22 @@
 	</svg>
 	
 
+
+
+
+
+
+<text id="format1" x="200" y="80">Median Rent by states</text>
+
+<!-- Add 2 buttons -->
+<button onclick="update(data19)">2019</button>
+<button onclick="update(data20)">2020</button>
+<button onclick="update(data21)">2021</button>
+
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+
+
     
     <script>
       
@@ -118,7 +134,100 @@
 
     </script>
  
+<script>
 
+// create 2 data_set
+var data19 = [
+{group: "United States", value: 1662.5},
+{group: "New York, NY", value: 2743.5},
+{group: "Los Angeles-Long Beach-Anaheim, CA", value: 2304.5},
+{group: "Chicago, IL", value: 1582.5},
+{group: "Dallas-Fort Worth, TX", value: 1403},
+{group: "Philadelphia, PA", value: 1550},
+{group: "Houston, TX", value: 1350},
+{group: "Washington, DC", value: 2053}
+];
+
+var data20 = [
+{group: "United States", value: 1687.5},
+{group: "New York, NY", value: 2659},
+{group: "Los Angeles-Long Beach-Anaheim, CA", value: 2322.5},
+{group: "Chicago, IL", value: 1583},
+{group: "Dallas-Fort Worth, TX", value: 1430},
+{group: "Philadelphia, PA", value: 1581},
+{group: "Houston, TX", value: 1357},
+{group: "Washington, DC", value: 2042.5}];
+
+var data21 = [
+{group: "United States", value: 1804},
+{group: "New York, NY", value: 2667},
+{group: "Los Angeles-Long Beach-Anaheim, CA", value: 2430.5},
+{group: "Chicago, IL", value: 1619.5},
+{group: "Dallas-Fort Worth, TX", value: 1561.5},
+{group: "Philadelphia, PA", value: 1661.5},
+{group: "Houston, TX", value: 1434},
+{group: "Washington, DC", value: 2090}];    
+    
+// set the dimensions and margins of the graph
+var margin = {top: 30, right: 30, bottom: 70, left: 60},
+    width = 660 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+
+// append the svg object to the body of the page
+var svg = d3.select("#my_dataviz")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+// X axis
+var x = d3.scaleBand()
+  .range([ 0, width ])
+  .domain(data19.map(function(d) { return d.group; }))
+  .padding(0.2);
+svg.append("g")
+  .attr("transform", "translate(0," + height + ")")
+  .call(d3.axisBottom(x))
+      .selectAll("text")
+    .attr("y", 0)
+    .attr("x", 9)
+    .attr("dy", ".35em")
+    .attr("transform", "rotate(90)")
+    .style("text-anchor", "start");
+
+// Add Y axis
+var y = d3.scaleLinear()
+  .domain([1000, 3000])
+  .range([ height, 0]);
+svg.append("g")
+  .attr("class", "myYaxis")
+  .call(d3.axisLeft(y));
+
+// A function that create / update the plot for a given variable:
+function update(data) {
+
+  var u = svg.selectAll("rect")
+    .data(data)
+
+  u
+    .enter()
+    .append("rect")
+    .merge(u)
+    .transition()
+    .duration(1000)
+      .attr("x", function(d) { return x(d.group); })
+      .attr("y", function(d) { return y(d.value); })
+      .attr("width", x.bandwidth())
+      .attr("height", function(d) { return height - y(d.value); })
+      .attr("fill", "#69b3a2")
+}
+
+// Initialize the plot with the first dataset
+update(data19)
+
+</script>
  
     </body>
 
