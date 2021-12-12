@@ -7,3 +7,15 @@ site: bookdown::bookdown_site
 
 # Introduction
 
+## Overview
+
+As New Yorkers struggle with higher gas and grocery prices amid record-high inflation rates, the cost of rent is also increasing (as usual) — and isn’t expected to level off anytime soon, according to data and experts. But it was surprising to hear that the rent price drastically went down during the pandemic time due to less demand.
+
+## Objective
+
+Hypothesis - The rent price drastically went down during the pandemic time due to less demand.
+
+Using the data we collected, we are going to analyze it with every states in US and check whether the hypothesis is correct or wrong.
+
+
+
