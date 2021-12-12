@@ -139,6 +139,11 @@
 <svg width="660" height="500" id="svg3">
 <text id="format1" x="200" y="80">Median Rent in the US 2019 to 2021</text>
 </svg>
+<ul>
+<li>Analyzing the median rent in the entire US from 2019 to 2021 (the period when the pandemic was happening), surprisingly there is no drop in the rental prices.</li>
+<li>And neither it didn’t shoot up well.</li>
+<li>Instead we could see a steady flat line indicating that the rental prices of US were stable during the pandemic time.</li>
+</ul>
 <!-- Color Scale -->
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 <p><text id="format1" x="200" y="80">Median Rent by Cities</text>
@@ -227,8 +232,7 @@
         .ease(d3.easeLinear) // Set Easing option
         .attr("stroke-dashoffset", 0); 
         
-        
-
+    
     </script>
 <script>
 
@@ -330,6 +334,12 @@ d3.csv("https://raw.githubusercontent.com/deepeshdinesh/R/master/data.csv",
 </script>
 </body>
 </html>
+<ul>
+<li>For every city except New York, we can see that the rental prices of that particular city follows the trend of the entire US rental price through 2019 to 2021.</li>
+<li>But for New York, there is a clear slight drop in the rental prices during the year 2020 (pandemic).</li>
+<li>So, it is evident that the actual data replicates our assumption here.</li>
+<li>Hence, our hypothesis is true.</li>
+</ul>
 
 </div>
             </section>

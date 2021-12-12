@@ -34,7 +34,9 @@
 	</svg>
 
 
-
+* Analyzing the median rent in the entire US from 2019 to 2021 (the period when the pandemic was happening), surprisingly there is no drop in the rental prices.
+* And neither it didn't shoot up well. 
+* Instead we could see a steady flat line indicating that the rental prices of US were stable during the pandemic time.
 
 <!-- Color Scale -->
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
@@ -126,8 +128,7 @@
 		.ease(d3.easeLinear) // Set Easing option
 		.attr("stroke-dashoffset", 0); 
 		
-		
-
+	
     </script>
  
 
@@ -230,6 +231,12 @@ d3.csv("https://raw.githubusercontent.com/deepeshdinesh/R/master/data.csv",
 
 
 </script> 
+
     </body>
 
 </html>
+
+* For every city except New York, we can see that the rental prices of that particular city follows the trend of the entire US rental price through 2019 to 2021.
+* But for New York, there is a clear slight drop in the rental prices during the year 2020 (pandemic).
+* So, it is evident that the actual data replicates our assumption here.
+* Hence, our hypothesis is true.
