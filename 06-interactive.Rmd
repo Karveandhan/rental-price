@@ -40,8 +40,6 @@
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 	
 
-
-
 <text id="format1" x="200" y="80">Median Rent by Cities</text>
 <br>
 <select id="selectButton"></select>
