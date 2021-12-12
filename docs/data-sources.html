@@ -78,7 +78,12 @@
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#overview"><i class="fa fa-check"></i><b>1.1</b> Overview</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#objective"><i class="fa fa-check"></i><b>1.2</b> Objective</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a></li>
+<li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="data-sources.html"><a href="data-sources.html#source"><i class="fa fa-check"></i><b>2.1</b> Source</a></li>
+<li class="chapter" data-level="2.2" data-path="data-sources.html"><a href="data-sources.html#information-about-the-data"><i class="fa fa-check"></i><b>2.2</b> Information about the data</a></li>
+<li class="chapter" data-level="2.3" data-path="data-sources.html"><a href="data-sources.html#a-quick-sample-of-the-data"><i class="fa fa-check"></i><b>2.3</b> A quick sample of the data</a></li>
+</ul></li>
 <li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a></li>
 <li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing Values</a></li>
 <li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a></li>
@@ -105,6 +110,20 @@
             <section class="normal" id="section-">
 <div id="data-sources" class="section level1" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Data sources</h1>
+<div id="source" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Source</h2>
+<p>We scraped the data from <a href="https://www.zillow.com/research/data/" class="uri">https://www.zillow.com/research/data/</a>, which is a big player in NY rental market. Zillow Observed Rent Index (ZORI): A smoothed measure of the typical observed market rate rent across a given region. ZORI is a repeat-rent index that is weighted to the rental housing stock to ensure representativeness across the entire market, not just those homes currently listed for-rent. The index is dollar-denominated by computing the mean of listed rents that fall into the 40th to 60th percentile range for all homes and apartments in a given region, which is once again weighted to reflect the rental housing stock.</p>
+</div>
+<div id="information-about-the-data" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Information about the data</h2>
+<ul>
+<li>Number of rows - 105</li>
+<li>Number of columns - 97</li>
+</ul>
+<p>The data contains the rental prices (in USD) of 104 different cities in US from Jan 2014 to Oct 2021.</p>
+</div>
+<div id="a-quick-sample-of-the-data" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> A quick sample of the data</h2>
 <pre><code>##    RegionID                         RegionName SizeRank X2014.01 X2014.02
 ## 1    102001                      United States        0     1347     1352
 ## 2    394913                       New York, NY        1     2356     2366
@@ -248,8 +267,8 @@
 ## 8      2109     2123     2137     2152
 ## 9      2233     2271     2308     2346
 ## 10     1747     1775     1802     1830</code></pre>
-<p>The rental data looks like this.</p>
 
+</div>
 </div>
             </section>
 

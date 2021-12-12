@@ -2,6 +2,9 @@ introduction
 overview
 objective
 data-sources
+source
+information-about-the-data
+a-quick-sample-of-the-data
 data-transformation
 missing-values
 results

@@ -1,5 +1,17 @@
 # Data sources
 
+## Source
+
+We scraped the data from https://www.zillow.com/research/data/, which is a big player in NY rental market. Zillow Observed Rent Index (ZORI): A smoothed measure of the typical observed market rate rent across a given region. ZORI is a repeat-rent index that is weighted to the rental housing stock to ensure representativeness across the entire market, not just those homes currently listed for-rent. The index is dollar-denominated by computing the mean of listed rents that fall into the 40th to 60th percentile range for all homes and apartments in a given region, which is once again weighted to reflect the rental housing stock.
+
+## Information about the data
+
+* Number of rows - 105
+* Number of columns - 97
+
+The data contains the rental prices (in USD) of 104 different cities in US from Jan 2014 to Oct 2021. 
+
+## A quick sample of the data
 ```{r, fig.width=20, fig.height=8}
 
 data <- read.csv("data.csv",header = TRUE, sep=",")
@@ -7,5 +19,3 @@ data <- read.csv("data.csv",header = TRUE, sep=",")
 head(data, 10)
 
 ```
-
-The rental data looks like this.
