@@ -1,3 +1,125 @@
 # Interactive component
+<html lang="en">
+    
+<head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="https://d3js.org/d3.v4.js"></script>
 
+        <style type ="text/css">
 
+  .line1 {
+        fill: none;
+        stroke: black;
+        stroke-width: 2.0px;
+      }
+	 
+	  
+	  #format1{
+			  font-size:20px;
+			  font-family:Roboto;}
+			  
+	  #format2{
+			  font-size:15px;
+			  font-family:Roboto;}
+        </style>
+		
+		
+      
+    </head>
+    
+    <body>
+    <svg width="800" height="500" id="svg3">
+	<text id="format1" x="200" y="80">Median Rent in the US 2019 to 2021</text>
+	</svg>
+	
+
+    
+    <script>
+      
+	  var svg3 = d3.select("#svg3")
+      var margin3 = {top: 100, right: 50, bottom: 30, left: 60}
+      var width3 =  +svg3.attr("width") - margin3.left - margin3.right
+      var height3 = +svg3.attr("height") - margin3.top - margin3.bottom
+      var g3 = svg3.append("g").attr("transform", `translate(${margin3.left}, ${margin3.top})`);
+      var parseTime = d3.timeParse("%b-%y");
+      var xScale3 = d3.scaleTime().range([0, width3]);
+      var yScale3 = d3.scaleLinear()
+        .domain([700, 3000])
+        .range([height3, 0]);
+      var line3 = d3.line()
+        .x(d => xScale3(d.date))
+        .y(d => yScale3(d.high));
+      var data3 = 
+      [{"date":"Jan-19","high":1270},
+{"date":"Feb-19","high":1274},
+{"date":"Mar-19","high":1278},
+{"date":"Apr-19","high":1283},
+{"date":"May-19","high":1288},
+{"date":"Jun-19","high":1294},
+{"date":"Jul-19","high":1300},
+{"date":"Aug-19","high":1304},
+{"date":"Sep-19","high":1309},
+{"date":"Oct-19","high":1313},
+{"date":"Nov-19","high":1316},
+{"date":"Dec-19","high":1319},
+{"date":"Jan-20","high":1322},
+{"date":"Feb-20","high":1326},
+{"date":"Mar-20","high":1330},
+{"date":"Apr-20","high":1334},
+{"date":"May-20","high":1341},
+{"date":"Jun-20","high":1344},
+{"date":"Jul-20","high":1348},
+{"date":"Aug-20","high":1351},
+{"date":"Sep-20","high":1359},
+{"date":"Oct-20","high":1367},
+{"date":"Nov-20","high":1376},
+{"date":"Dec-20","high":1390},
+{"date":"Jan-21","high":1405},
+{"date":"Feb-21","high":1420},
+{"date":"Mar-21","high":1439},
+{"date":"Apr-21","high":1463},
+{"date":"May-21","high":1479.5},
+{"date":"Jun-21","high":1502},
+{"date":"Jul-21","high":1520},
+{"date":"Aug-21","high":1539},
+{"date":"Sep-21","high":1554},
+{"date":"Oct-21","high":1572.5}];
+		
+      data3.forEach(function(d) {
+            d.date = parseTime(d.date);
+      });
+     
+      xScale3
+        .domain(d3.extent(data3, d => d.date));
+        
+      g3.append("g")
+          .attr("transform", `translate(0, ${height3})`)
+          .call(d3.axisBottom(xScale3).ticks(18));
+      g3.append("g")
+          .call(d3.axisLeft(yScale3));
+      g3.append("path")
+          .datum(data3)
+          .attr("class", "line1")
+          .attr("fill", "none")
+          .attr("d", line3);
+		  
+	  let totalLength1 = svg3.select('.line1').node().getTotalLength();
+
+	  svg3.select('.line1')
+		.attr("stroke-dasharray", totalLength1 + " " + totalLength1)
+		.attr("stroke-dashoffset", totalLength1)
+		.transition() // Call Transition Method
+		.duration(2000) // Set Duration timing (ms)
+		.ease(d3.easeLinear) // Set Easing option
+		.attr("stroke-dashoffset", 0); 
+		
+		
+
+    </script>
+ 
+
+ 
+    </body>
+
+</html>
