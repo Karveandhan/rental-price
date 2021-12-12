@@ -73,11 +73,17 @@ else{
 ```{r, fig.width=20, fig.height=8}
 data <- read.csv("data.csv",header = TRUE, sep=",")
 plot_missing(data, percent = TRUE)
-plot_missing(data, percent = FALSE)
-
 ```
 From the above graph - "Percentage of missing values", we can clearly see that the number of missing values in our dataset are significantly very less.
 
-Most of the missing values belong to the initial part of the time frame (Jan 2014). While there are relatively fewer missing values in few months in the current year (2021).
 
-The significance of these missing value of the project will be less as there are sufficient datas available to carry out the project. There is only one data missing in the previous month (October 2021). So, with this available dataset project can be proceeded.
+```{r, fig.width=20, fig.height=8}
+
+plot_missing(data, percent = FALSE)
+
+```
+
+
+* Most of the missing values belong to the initial part of the time frame (Jan 2014). While there are relatively fewer missing values in few months in the current year (2021).
+
+* The significance of these missing value of the project will be less as there are sufficient datas available to carry out the project. There is only one data missing in the previous month (October 2021). So, with this available dataset project can be proceeded.
