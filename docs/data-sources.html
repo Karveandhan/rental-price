@@ -82,7 +82,8 @@
 <ul>
 <li class="chapter" data-level="2.1" data-path="data-sources.html"><a href="data-sources.html#source"><i class="fa fa-check"></i><b>2.1</b> Source</a></li>
 <li class="chapter" data-level="2.2" data-path="data-sources.html"><a href="data-sources.html#information-about-the-data"><i class="fa fa-check"></i><b>2.2</b> Information about the data</a></li>
-<li class="chapter" data-level="2.3" data-path="data-sources.html"><a href="data-sources.html#a-quick-sample-of-the-data"><i class="fa fa-check"></i><b>2.3</b> A quick sample of the data</a></li>
+<li class="chapter" data-level="2.3" data-path="data-sources.html"><a href="data-sources.html#format-of-the-data"><i class="fa fa-check"></i><b>2.3</b> Format of the data</a></li>
+<li class="chapter" data-level="2.4" data-path="data-sources.html"><a href="data-sources.html#a-quick-sample-of-the-data"><i class="fa fa-check"></i><b>2.4</b> A quick sample of the data</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a></li>
 <li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing Values</a></li>
@@ -122,8 +123,41 @@
 </ul>
 <p>The data contains the rental prices (in USD) of 104 different cities in US from Jan 2014 to Oct 2021.</p>
 </div>
-<div id="a-quick-sample-of-the-data" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> A quick sample of the data</h2>
+<div id="format-of-the-data" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Format of the data</h2>
+<table>
+<colgroup>
+<col width="19%" />
+<col width="80%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variables</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>RegionID</td>
+<td>ID mentioned for that particular region of US (Integer)</td>
+</tr>
+<tr class="even">
+<td>RegionName</td>
+<td>A city in the US (String)</td>
+</tr>
+<tr class="odd">
+<td>SizeRank</td>
+<td>The rank assigned to that particular region (Integer)</td>
+</tr>
+<tr class="even">
+<td>2014-01 to 2021-10</td>
+<td>Rental price for that particular month, in USD (Integer)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="a-quick-sample-of-the-data" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> A quick sample of the data</h2>
 <pre><code>##    RegionID                         RegionName SizeRank X2014.01 X2014.02
 ## 1    102001                      United States        0     1347     1352
 ## 2    394913                       New York, NY        1     2356     2366

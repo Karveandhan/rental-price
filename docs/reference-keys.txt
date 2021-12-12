@@ -4,6 +4,7 @@ objective
 data-sources
 source
 information-about-the-data
+format-of-the-data
 a-quick-sample-of-the-data
 data-transformation
 missing-values

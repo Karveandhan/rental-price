@@ -11,6 +11,15 @@ We scraped the data from https://www.zillow.com/research/data/, which is a big p
 
 The data contains the rental prices (in USD) of 104 different cities in US from Jan 2014 to Oct 2021. 
 
+## Format of the data
+
+Variables                | Description
+-----------------------  | ------------------------------------------------------------------------------------------------
+RegionID                 | ID mentioned for that particular region of US (Integer)
+RegionName               | A city in the US (String)
+SizeRank                 | The rank assigned to that particular region (Integer)
+2014-01 to 2021-10       | Rental price for that particular month, in USD (Integer)
+
 ## A quick sample of the data
 ```{r, fig.width=20, fig.height=8}
 
