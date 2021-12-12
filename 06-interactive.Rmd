@@ -29,22 +29,23 @@
     </head>
     
     <body>
-    <svg width="800" height="500" id="svg3">
+    <svg width="660" height="500" id="svg3">
 	<text id="format1" x="200" y="80">Median Rent in the US 2019 to 2021</text>
 	</svg>
+
+
+
+
+<!-- Color Scale -->
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 	
 
-<text id="format1" x="200" y="80">Median Rent by states</text>
-
-<!-- Add 2 buttons -->
-<button onclick="update(data19)">2019</button>
-<button onclick="update(data20)">2020</button>
-<button onclick="update(data21)">2021</button>
+<text id="format1" x="200" y="80">Median Rent by Cities</text>
+<br>
+<select id="selectButton"></select>
 
 <!-- Create a div where the graph will take place -->
-<div id="my_dataviz"></div>
-
-
+<div id="filtered_data"></div>
     
     <script>
       
@@ -129,47 +130,17 @@
 
     </script>
  
+
+ 
 <script>
 
-// create 2 data_set
-var data19 = [
-{group: "United States", value: 1662.5},
-{group: "New York, NY", value: 2743.5},
-{group: "Los Angeles-Long Beach-Anaheim, CA", value: 2304.5},
-{group: "Chicago, IL", value: 1582.5},
-{group: "Dallas-Fort Worth, TX", value: 1403},
-{group: "Philadelphia, PA", value: 1550},
-{group: "Houston, TX", value: 1350},
-{group: "Washington, DC", value: 2053}
-];
-
-var data20 = [
-{group: "United States", value: 1687.5},
-{group: "New York, NY", value: 2659},
-{group: "Los Angeles-Long Beach-Anaheim, CA", value: 2322.5},
-{group: "Chicago, IL", value: 1583},
-{group: "Dallas-Fort Worth, TX", value: 1430},
-{group: "Philadelphia, PA", value: 1581},
-{group: "Houston, TX", value: 1357},
-{group: "Washington, DC", value: 2042.5}];
-
-var data21 = [
-{group: "United States", value: 1804},
-{group: "New York, NY", value: 2667},
-{group: "Los Angeles-Long Beach-Anaheim, CA", value: 2430.5},
-{group: "Chicago, IL", value: 1619.5},
-{group: "Dallas-Fort Worth, TX", value: 1561.5},
-{group: "Philadelphia, PA", value: 1661.5},
-{group: "Houston, TX", value: 1434},
-{group: "Washington, DC", value: 2090}];    
-    
 // set the dimensions and margins of the graph
-var margin = {top: 30, right: 30, bottom: 70, left: 60},
+var margin = {top: 10, right: 30, bottom: 30, left: 60},
     width = 660 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-var svg = d3.select("#my_dataviz")
+var svg = d3.select("#filtered_data")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -177,53 +148,88 @@ var svg = d3.select("#my_dataviz")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
-// X axis
-var x = d3.scaleBand()
-  .range([ 0, width ])
-  .domain(data19.map(function(d) { return d.group; }))
-  .padding(0.2);
-svg.append("g")
-  .attr("transform", "translate(0," + height + ")")
-  .call(d3.axisBottom(x))
-      .selectAll("text")
-    .attr("y", 0)
-    .attr("x", 9)
-    .attr("dy", ".35em")
-    .attr("transform", "rotate(90)")
-    .style("text-anchor", "start");
+//Read the data
+d3.csv("https://raw.githubusercontent.com/deepeshdinesh/R/master/data.csv", 
+       function(d){
+    return { year : d3.timeParse("%m/%d/%Y")(d.year), name : d.name, n:d.n }
+  },
+       function(dataa) {
 
-// Add Y axis
-var y = d3.scaleLinear()
-  .domain([0, 3500])
-  .range([ height, 0]);
-svg.append("g")
-  .attr("class", "myYaxis")
-  .call(d3.axisLeft(y));
+    // List of groups (here I have one group per column)
+    var allGroup = d3.map(dataa, function(d){return(d.name)}).keys()
 
-// A function that create / update the plot for a given variable:
-function update(data) {
+    // add the options to the button
+    d3.select("#selectButton")
+      .selectAll('myOptions')
+     	.data(allGroup)
+      .enter()
+    	.append('option')
+      .text(function (d) { return d; }) // text showed in the menu
+      .attr("value", function (d) { return d; }) // corresponding value returned by the button
 
-  var u = svg.selectAll("rect")
-    .data(data)
+    // A color scale: one color for each group
+    var myColor = d3.scaleOrdinal()
+      .domain(allGroup)
+      .range(d3.schemeSet2);
 
-  u
-    .enter()
-    .append("rect")
-    .merge(u)
-    .transition()
-    .duration(1000)
-      .attr("x", function(d) { return x(d.group); })
-      .attr("y", function(d) { return y(d.value); })
-      .attr("width", x.bandwidth())
-      .attr("height", function(d) { return height - y(d.value); })
-      .attr("fill", "#69b3a2")
-}
+   // Add X axis --> it is a date format
+    var x = d3.scaleTime()
+      .domain(d3.extent(dataa, function(d) { return d.year; }))
+      .range([ 0, width ]);
+    svg.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
 
-// Initialize the plot with the first dataset
-update(data19)
+    // Add Y axis
+    var y = d3.scaleLinear()
+      .domain([0, d3.max(dataa, function(d) { return +d.n; })])
+      .range([ height, 0 ]);
+    svg.append("g")
+      .call(d3.axisLeft(y));
 
-</script>
- 
+    // Initialize line with first group of the list
+    var line = svg
+      .append('g')
+      .append("path")
+        .datum(dataa.filter(function(d){return d.name==allGroup[0]}))
+        .attr("d", d3.line()
+          .x(function(d) { return x(d.year) })
+          .y(function(d) { return y(+d.n) })
+        )
+        .attr("stroke", function(d){ return myColor("valueA") })
+        .style("stroke-width", 4)
+        .style("fill", "none")
+
+    // A function that update the chart
+    function update_data(selectedGroup) {
+
+      // Create new data with the selection?
+      var dataFilter = dataa.filter(function(d){return d.name==selectedGroup})
+
+      // Give these new data to update line
+      line
+          .datum(dataFilter)
+          .transition()
+          .duration(1000)
+          .attr("d", d3.line()
+            .x(function(d) { return x(d.year) })
+            .y(function(d) { return y(+d.n) })
+          )
+          .attr("stroke", function(d){ return myColor(selectedGroup) })
+    }
+
+    // When the button is changed, run the updateChart function
+    d3.select("#selectButton").on("change", function(d) {
+        // recover the option that has been chosen
+        var selectedOption = d3.select(this).property("value")
+        // run the updateChart function with this selected option
+        update_data(selectedOption)
+    })
+
+})
+
+
+</script> 
     </body>
 
 </html>
