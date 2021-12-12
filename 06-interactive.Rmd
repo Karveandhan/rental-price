@@ -29,11 +29,13 @@
     </head>
     
     <body>
-    <svg width="800" height="500" id="svg3">
+    <svg width="660" height="500" id="svg3">
 	<text id="format1" x="200" y="80">Median Rent in the US 2019 to 2021</text>
 	</svg>
 
 
+<text id="format1" x="200" y="80">Median Rent by Cities</text>
+<br>
 <select id="selectButton"></select>
 
 <!-- Create a div where the graph will take place -->
@@ -43,7 +45,7 @@
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 	
 
-<text id="format1" x="200" y="80">Median Rent by states</text>
+<text id="format1" x="200" y="80">Median of Popular Cities</text>
 
 <!-- Add 2 buttons -->
 <button onclick="update(data19)">2019</button>
@@ -237,7 +239,7 @@ update(data19)
 
 // set the dimensions and margins of the graph
 var margin = {top: 10, right: 30, bottom: 30, left: 60},
-    width = 460 - margin.left - margin.right,
+    width = 660 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
