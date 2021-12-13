@@ -183,7 +183,7 @@ d3.csv("https://raw.githubusercontent.com/deepeshdinesh/R/master/data.csv",
 
     // Add Y axis
     var y = d3.scaleLinear()
-      .domain([0, d3.max(dataa, function(d) { return +d.n; })])
+      .domain([500, d3.max(dataa, function(d) { return +d.n; })])
       .range([ height, 0 ]);
     svg.append("g")
       .call(d3.axisLeft(y));
@@ -238,5 +238,7 @@ d3.csv("https://raw.githubusercontent.com/deepeshdinesh/R/master/data.csv",
 
 * For every city except New York, we can see that the rental prices of that particular city follows the trend of the entire US rental price through 2019 to 2021.
 * But for New York, there is a clear slight drop in the rental prices during the year 2020 (pandemic).
+* Also we observed that the less popular City saw an increase in median rent during the pandemic, this was partly driven by the wide spread "Work From Home" inititives.
+* Low mortgage rate during this pandemic also accounts for this trend.
 * So, it is evident that the actual data replicates our assumption here.
 * Hence, our hypothesis is true.
