@@ -22,7 +22,7 @@ data %>%
     y = "Rental price",
     title = "Top 5 Cities with high avg rental prices (2020)"
   ) +
-  theme_minimal()
+  theme_minimal(base_size = 30)
 ```
 
 ## Top 5 Cities with high avg rental prices (2021)
@@ -41,7 +41,7 @@ data %>%
     y = "Rental price",
     title = "Top 5 Cities with high avg rental prices (2021)"
   )+
-  theme_minimal()
+  theme_minimal(base_size = 30)
 
 ```
 
@@ -63,7 +63,7 @@ ggplot(ny_data) +
  aes(x = `as.numeric(unlist(ny_data))`) +
  geom_histogram(bins = 20L, fill = "#112446") +
  labs(x = "Rental Price", y = "Frequency", title = "Histogram of NY Rental prices (using monthwise mean)") +
- theme_minimal()
+ theme_minimal(base_size = 30)
 
 ```
 
@@ -91,6 +91,7 @@ ny_data3$label=factor(monlab, levels = monlab)
 ny_data3 <- mutate(ny_data3, condition=if_else(Price>0, "Increase", "Decrease"))
 
 ggplot(data=ny_data3,aes(x=label,y=Price, fill=condition))+
+  labs(x = "Months", y = "Price")+
   geom_col(position = "identity")+
   theme(axis.text.x=element_text(angle=45, hjust=1))
 
