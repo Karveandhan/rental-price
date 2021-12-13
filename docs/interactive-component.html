@@ -381,7 +381,7 @@ var svg = d3.select("#filtered_data")
           "translate(" + margin.left + "," + margin.top + ")");
 
 //Read the data
-d3.csv("https://raw.githubusercontent.com/deepeshdinesh/R/master/data.csv", 
+d3.csv("https://raw.githubusercontent.com/Karveandhan/rental-price/main/line_data.csv", 
        function(d){
     return { year : d3.timeParse("%m/%d/%Y")(d.year), name : d.name, n:d.n }
   },
