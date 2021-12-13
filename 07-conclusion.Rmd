@@ -1,2 +1,19 @@
 # Conclusion
 
+We started this study with a hypothesis that,
+
+## Hypothesis
+
+The rent price drastically went down during the pandemic time due to less demand.
+
+So, after analyzing the data collected, is the hypothesis that we assumed is true? - ***YES!***
+
+## How?
+
+* With the exception of New York, we can observe that the rental prices in each city follow the overall US rental price trend from 2019 to 2021. However, there is a noticeable modest reduction in rental prices in New York throughout the year 2020 (pandemic). 
+
+* We also noticed that during the epidemic, the less popular cities had a spike in median rent, which was fueled in part by the widespread "Work From Home" initiatives.
+
+* This tendency is also explained by the low mortgage rate during the pandemic.
+
+* As a result, it is clear that the actual data supports our hypothesis.
