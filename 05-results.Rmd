@@ -45,6 +45,9 @@ data %>%
 
 ```
 
+When both plots are being compared, we observe that the top 5 rental price of both the years have been the same city. While we observe
+only a marginal increase or decrease in Boston, New York, San Francisco, and San Jose, we observe a substantial increase in the rental price of the city Ventura, CA
+
 ## Histogram of NY Rental prices
 
 ```{r, fig.width=20, fig.height=8}
@@ -63,3 +66,35 @@ ggplot(ny_data) +
  theme_minimal()
 
 ```
+
+## The change in NY Rental Prices for the same months (Comparing Year 2019 with 2020) 
+
+```{r}
+
+ny_data1<-data %>%
+  filter(RegionName=='New York, NY')
+ny_data1<-as.data.frame(t(ny_data1))
+ny_data1<-as.data.frame(ny_data1[c(64:73),])
+ny_data1<-as.data.frame(as.numeric(unlist(ny_data1)))
+names(ny_data1)[names(ny_data1) == 'as.numeric(unlist(ny_data1))'] <- 'Price'
+
+ny_data2<-data %>%
+  filter(RegionName=='New York, NY')
+ny_data2<-as.data.frame(t(ny_data2))
+ny_data2<-as.data.frame(ny_data2[c(76:85),])
+ny_data2<-as.data.frame(as.numeric(unlist(ny_data2)))
+names(ny_data2)[names(ny_data2) == 'as.numeric(unlist(ny_data2))'] <- 'Price'
+
+ny_data3<-ny_data2-ny_data1
+monlab=c("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct")
+ny_data3$label=factor(monlab, levels = monlab)
+ny_data3 <- mutate(ny_data3, condition=if_else(Price>0, "Increase", "Decrease"))
+
+ggplot(data=ny_data3,aes(x=label,y=Price, fill=condition))+
+  geom_col(position = "identity")+
+  theme(axis.text.x=element_text(angle=45, hjust=1))
+
+
+```
+While the usual trend remains increasing as years increase, there are some strange results obtained when comparing the year 2019 and 2020. Comparing the change in price for the same month with its previous year, we observe that the rental price have substantially decreased. This trend has never been observed in any of the previous years. The cause of this impact to most likely due to covid19.
+

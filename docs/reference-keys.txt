@@ -12,5 +12,6 @@ results
 top-5-cities-with-high-avg-rental-prices-2020
 top-5-cities-with-high-avg-rental-prices-2021
 histogram-of-ny-rental-prices
+the-change-in-ny-rental-prices-for-the-same-months-comparing-year-2019-with-2020
 interactive-component
 conclusion
