@@ -89,11 +89,14 @@ ny_data3<-ny_data2-ny_data1
 monlab=c("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")
 ny_data3$label=factor(monlab, levels = monlab)
 ny_data3 <- mutate(ny_data3, condition=if_else(Price>0, "Increase", "Decrease"))
+ny_data3 <- mutate(ny_data3, loc="New York")
 
 ggplot(data=ny_data3,aes(x=label,y=Price, fill=condition))+
   labs(x = "Months", y = "Price")+
   geom_col(position = "identity")+
-  theme(axis.text.x=element_text(angle=45, hjust=1))
+  theme(axis.text.x=element_text(angle=45, hjust=1))+
+  xlab("Months (Comparing 2019 and 2020)")+
+  ylab("Price Increase or Decrease in $")
 ```
 
 While the usual trend remains increasing as years increase, there are some strange results obtained when comparing the year 2019 and 2020. Comparing the change in price for the same month with its previous year, we observe that the rental price have substantially decreased. This trend has never been observed in any of the previous years. The cause of this impact to most likely due to covid19.But during the recovery stages of COVID19 (November, December), we could observe that the reduction in prices have started decreasing.
@@ -118,12 +121,123 @@ ny_data3<-ny_data2-ny_data1
 monlab=c("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct")
 ny_data3$label=factor(monlab, levels = monlab)
 ny_data3 <- mutate(ny_data3, condition=if_else(Price>0, "Increase", "Decrease"))
+ny_data3 <- mutate(ny_data3, loc="New York")
 
 ggplot(data=ny_data3,aes(x=label,y=Price, fill=condition))+
   labs(x = "Months", y = "Price")+
   geom_col(position = "identity")+
-  theme(axis.text.x=element_text(angle=45, hjust=1))
+  theme(axis.text.x=element_text(angle=45, hjust=1))+
+  xlab("Months (Comparing 2020 and 2021)")+
+  ylab("Price Increase or Decrease in $")
 
 ```
 
 When compared to the year 2020, we see the rental prices have started increasing. While the pandemic has made a huge negative impact on rental prices in the year 2020, it is clearly visible that the prices are marching back to normal and the trend seems to be carried for every next month as well. So, New York is marching towards the pre-pandemic normal.
+
+## Comparing the impact of covid on rental pricing within top 5 cities (New York and Boston)
+```{r}
+bo_data1<-data %>%
+  filter(RegionName=='Boston, MA')
+bo_data1<-as.data.frame(t(bo_data1))
+bo_data1<-as.data.frame(bo_data1[c(64:75),])
+bo_data1<-as.data.frame(as.numeric(unlist(bo_data1)))
+names(bo_data1)[names(bo_data1) == 'as.numeric(unlist(bo_data1))'] <- 'Price'
+
+bo_data2<-data %>%
+  filter(RegionName=='Boston, MA')
+bo_data2<-as.data.frame(t(bo_data2))
+bo_data2<-as.data.frame(bo_data2[c(76:87),])
+bo_data2<-as.data.frame(as.numeric(unlist(bo_data2)))
+names(bo_data2)[names(bo_data2) == 'as.numeric(unlist(bo_data2))'] <- 'Price'
+
+bo_dat3<-bo_data2-bo_data1
+monlab=c("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")
+bo_dat3$label=factor(monlab, levels = monlab)
+bo_dat3 <- mutate(bo_dat3, condition=if_else(Price>0, "Increase", "Decrease"))
+bo_dat3 <- mutate(bo_dat3, loc="Boston")
+
+ny_data1<-data %>%
+  filter(RegionName=='New York, NY')
+ny_data1<-as.data.frame(t(ny_data1))
+ny_data1<-as.data.frame(ny_data1[c(64:75),])
+ny_data1<-as.data.frame(as.numeric(unlist(ny_data1)))
+names(ny_data1)[names(ny_data1) == 'as.numeric(unlist(ny_data1))'] <- 'Price'
+
+ny_data2<-data %>%
+  filter(RegionName=='New York, NY')
+ny_data2<-as.data.frame(t(ny_data2))
+ny_data2<-as.data.frame(ny_data2[c(76:87),])
+ny_data2<-as.data.frame(as.numeric(unlist(ny_data2)))
+names(ny_data2)[names(ny_data2) == 'as.numeric(unlist(ny_data2))'] <- 'Price'
+
+ny_data3<-ny_data2-ny_data1
+monlab=c("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")
+ny_data3$label=factor(monlab, levels = monlab)
+ny_data3 <- mutate(ny_data3, condition=if_else(Price>0, "Increase", "Decrease"))
+ny_data3 <- mutate(ny_data3, loc="New York")
+
+ggplot()+
+  labs(x = "Months", y = "Price")+
+  geom_col(data=bo_dat3,aes(x=label,y=Price, fill=loc),position = "identity",alpha=0.8)+
+  geom_col(data=ny_data3,aes(x=label,y=Price, fill=loc),position = "identity",alpha=0.5)+
+  theme(axis.text.x=element_text(angle=45, hjust=1))+
+  xlab("Months (Comparing 2019 and 2020)")+
+  ylab("Price Increase or Decrease in $")
+
+
+
+```
+
+```{r}
+bo_data1<-data %>%
+  filter(RegionName=='Boston, MA')
+bo_data1<-as.data.frame(t(bo_data1))
+bo_data1<-as.data.frame(bo_data1[c(76:85),])
+bo_data1<-as.data.frame(as.numeric(unlist(bo_data1)))
+names(bo_data1)[names(bo_data1) == 'as.numeric(unlist(bo_data1))'] <- 'Price'
+
+bo_data2<-data %>%
+  filter(RegionName=='Boston, MA')
+bo_data2<-as.data.frame(t(bo_data2))
+bo_data2<-as.data.frame(bo_data2[c(88:97),])
+bo_data2<-as.data.frame(as.numeric(unlist(bo_data2)))
+names(bo_data2)[names(bo_data2) == 'as.numeric(unlist(bo_data2))'] <- 'Price'
+
+bo_dat3<-bo_data2-bo_data1
+monlab=c("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct")
+bo_dat3$label=factor(monlab, levels = monlab)
+bo_dat3 <- mutate(bo_dat3, condition=if_else(Price>0, "Increase", "Decrease"))
+bo_dat3 <- mutate(bo_dat3, loc="Boston")
+
+ny_data1<-data %>%
+  filter(RegionName=='New York, NY')
+ny_data1<-as.data.frame(t(ny_data1))
+ny_data1<-as.data.frame(ny_data1[c(76:85),])
+ny_data1<-as.data.frame(as.numeric(unlist(ny_data1)))
+names(ny_data1)[names(ny_data1) == 'as.numeric(unlist(ny_data1))'] <- 'Price'
+
+ny_data2<-data %>%
+  filter(RegionName=='New York, NY')
+ny_data2<-as.data.frame(t(ny_data2))
+ny_data2<-as.data.frame(ny_data2[c(88:97),])
+ny_data2<-as.data.frame(as.numeric(unlist(ny_data2)))
+names(ny_data2)[names(ny_data2) == 'as.numeric(unlist(ny_data2))'] <- 'Price'
+
+ny_data3<-ny_data2-ny_data1
+monlab=c("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct")
+ny_data3$label=factor(monlab, levels = monlab)
+ny_data3 <- mutate(ny_data3, condition=if_else(Price>0, "Increase", "Decrease"))
+ny_data3 <- mutate(ny_data3, loc="New York")
+
+ggplot()+
+  labs(x = "Months", y = "Price")+
+  geom_col(data=bo_dat3,aes(x=label,y=Price, fill=loc),position = "identity",alpha=0.8)+
+  geom_col(data=ny_data3,aes(x=label,y=Price, fill=loc),position = "identity",alpha=0.5)+
+  theme(axis.text.x=element_text(angle=45, hjust=1))+
+  xlab("Months (Comparing 2020 and 2021)")+
+  ylab("Price Increase or Decrease in $")
+
+
+```
+
+We observe that the due to covid, there has been a drop in rental pricing for Boston as is for New York. But in New York, there has been a tremendous decrease rapidly when compared to Boston. The decrease began for Boston during May 2020, while it started to decrease in New York by March 2020. And the decrease value for New York is almost more than twice than the drop at Boston. During the road to recovery,Boston's rental price stated increasing by May 2021, while for New York it started by June 2021. Though New York took time to reach this point, now the rental price have increased beyond Boston during the month of October 2021. So, New York has almost reached back to it's pre-covid situation.
