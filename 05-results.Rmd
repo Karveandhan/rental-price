@@ -1,1 +1,27 @@
 # Results
+```{r, fig.width=20, fig.height=8}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+data <- read.csv("data.csv",header = TRUE, sep=",")
+
+
+library(dplyr)
+library(ggplot2)
+
+data$mean_2020 <- rowMeans(data[,c('X2020.01','X2020.02','X2020.03','X2020.04','X2020.05','X2020.06','X2020.07','X2020.08','X2020.09','X2020.10','X2020.11','X2020.12')], na.rm=TRUE)
+
+data %>%
+ filter(mean_2020 >= 2400L & mean_2020 <= 3040L) %>%
+ ggplot() +
+  aes(x = RegionName, weight = mean_2020) +
+  geom_bar(fill = "#112446") +
+  labs(
+    x = "Cities",
+    y = "Rental price",
+    title = "Top 5 Cities with high avg rental prices (2020)"
+  ) +
+  theme_minimal()
+
+```
