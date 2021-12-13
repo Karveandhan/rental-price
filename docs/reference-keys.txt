@@ -9,5 +9,8 @@ a-quick-sample-of-the-data
 data-transformation
 missing-values
 results
+top-5-cities-with-high-avg-rental-prices-2020
+top-5-cities-with-high-avg-rental-prices-2021
+histogram-of-ny-rental-prices
 interactive-component
 conclusion

@@ -1,4 +1,7 @@
 # Results
+
+## Top 5 Cities with high avg rental prices (2020)
+
 ```{r, fig.width=20, fig.height=8}
 library(dplyr)
 library(tidyr)
@@ -6,9 +9,6 @@ library(ggplot2)
 
 data <- read.csv("data.csv",header = TRUE, sep=",")
 
-
-library(dplyr)
-library(ggplot2)
 
 data$mean_2020 <- rowMeans(data[,c('X2020.01','X2020.02','X2020.03','X2020.04','X2020.05','X2020.06','X2020.07','X2020.08','X2020.09','X2020.10','X2020.11','X2020.12')], na.rm=TRUE)
 
@@ -23,5 +23,43 @@ data %>%
     title = "Top 5 Cities with high avg rental prices (2020)"
   ) +
   theme_minimal()
+```
+
+## Top 5 Cities with high avg rental prices (2021)
+
+```{r, fig.width=20, fig.height=8}
+
+data$mean_2021 <- rowMeans(data[,c('X2021.01','X2021.02','X2021.03','X2021.04','X2021.05','X2021.06','X2021.07','X2021.08','X2021.09','X2021.10')], na.rm=TRUE)
+
+data %>%
+ filter(mean_2021 >= 2499L) %>%
+ ggplot() +
+  aes(x = RegionName, weight = mean_2021) +
+  geom_bar(fill = "#112446") +
+  labs(
+    x = "Cities",
+    y = "Rental price",
+    title = "Top 5 Cities with high avg rental prices (2021)"
+  )+
+  theme_minimal()
+
+```
+
+## Histogram of NY Rental prices
+
+```{r, fig.width=20, fig.height=8}
+
+ny_data<-data %>%
+  filter(RegionName=='New York, NY')
+ny_data<-as.data.frame(t(ny_data))
+ny_data<-as.data.frame(ny_data[-c(1, 2, 3),])
+ny_data<-as.data.frame(as.numeric(unlist(ny_data)))
+
+
+ggplot(ny_data) +
+ aes(x = `as.numeric(unlist(ny_data))`) +
+ geom_histogram(bins = 20L, fill = "#112446") +
+ labs(x = "Rental Price", y = "Frequency", title = "Histogram of NY Rental prices (using monthwise mean)") +
+ theme_minimal()
 
 ```
