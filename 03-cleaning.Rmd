@@ -3,3 +3,15 @@ We downloaded data as csv files from <website> and transformed it based on our n
 
 We picked City, State, and median house prices, and used it for our EDA and other analysis.
 In the interactive chart we wanted to explore various data sources in d3 and we used csv and static json created inside the html page.
+
+As the data itself is in a clean format, there is no necessity for us to transform the data.
+
+Here is a quick glimpse of the data.
+
+```{r, fig.width=20, fig.height=8}
+
+data <- read.csv("data.csv",header = TRUE, sep=",")
+
+tail(data, 10)
+
+```
