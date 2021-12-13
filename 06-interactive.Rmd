@@ -65,35 +65,38 @@
 
 // create 2 data_set
 var data19 = [
-{group: "United States", value: 1662.5},
+{group: "San Jose, CA", value: 3090.5},
+{group: "San Francisco, CA", value: 3015},
 {group: "New York, NY", value: 2743.5},
+{group: "Boston, MA", value: 2483.5},
+{group: "Ventura, CA", value: 2436.5},
+{group: "Urban Honolulu, HI", value: 2349.5},
 {group: "Los Angeles-Long Beach-Anaheim, CA", value: 2304.5},
-{group: "Chicago, IL", value: 1582.5},
-{group: "Dallas-Fort Worth, TX", value: 1403},
-{group: "Philadelphia, PA", value: 1550},
-{group: "Houston, TX", value: 1350},
-{group: "Washington, DC", value: 2053}
+{group: "San Diego, CA", value: 2230},
+{group: "Stamford, CT", value: 2169.5}
 ];
 
 var data20 = [
-{group: "United States", value: 1687.5},
+{group: "San Jose, CA", value: 3027},
+{group: "San Francisco, CA", value: 2936.5},
 {group: "New York, NY", value: 2659},
+{group: "Boston, MA", value: 2454.5},
+{group: "Ventura, CA", value: 2495},
+{group: "Urban Honolulu, HI", value: 2356.5},
 {group: "Los Angeles-Long Beach-Anaheim, CA", value: 2322.5},
-{group: "Chicago, IL", value: 1583},
-{group: "Dallas-Fort Worth, TX", value: 1430},
-{group: "Philadelphia, PA", value: 1581},
-{group: "Houston, TX", value: 1357},
-{group: "Washington, DC", value: 2042.5}];
+{group: "San Diego, CA", value: 2282.5},
+{group: "Stamford, CT", value: 2237.5}];
 
 var data21 = [
-{group: "United States", value: 1804},
+{group: "San Jose, CA", value: 2993.5},
+{group: "San Francisco, CA", value: 2909.5},
 {group: "New York, NY", value: 2667},
+{group: "Boston, MA", value: 2498},
+{group: "Ventura, CA", value: 2746},
+{group: "San Diego, CA", value: 2490.5},
+{group: "Urban Honolulu, HI", value: 2487},
 {group: "Los Angeles-Long Beach-Anaheim, CA", value: 2430.5},
-{group: "Chicago, IL", value: 1619.5},
-{group: "Dallas-Fort Worth, TX", value: 1561.5},
-{group: "Philadelphia, PA", value: 1661.5},
-{group: "Houston, TX", value: 1434},
-{group: "Washington, DC", value: 2090}];    
+{group: "Stamford, CT", value: 2421}];    
 
 
 
@@ -142,7 +145,7 @@ function update_bar(data) {
 
 
   // Update the Y axis
-  y.domain([0, d3.max(data, function(d) { return d.value }) ]);
+  y.domain([1000, 3000]);
   yAxis.transition().duration(1000).call(d3.axisLeft(y));
     
     //var svg = d3.select("#my_dataviz_bar")
@@ -182,7 +185,7 @@ update_bar(data19)
       var parseTime = d3.timeParse("%b-%y");
       var xScale3 = d3.scaleTime().range([0, width3]);
       var yScale3 = d3.scaleLinear()
-        .domain([0, 3500])
+        .domain([0, 3000])
         .range([height3, 0]);
       var line3 = d3.line()
         .x(d => xScale3(d.date))
