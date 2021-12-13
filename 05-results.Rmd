@@ -96,5 +96,6 @@ ggplot(data=ny_data3,aes(x=label,y=Price, fill=condition))+
 
 
 ```
+
 While the usual trend remains increasing as years increase, there are some strange results obtained when comparing the year 2019 and 2020. Comparing the change in price for the same month with its previous year, we observe that the rental price have substantially decreased. This trend has never been observed in any of the previous years. The cause of this impact to most likely due to covid19.
 
