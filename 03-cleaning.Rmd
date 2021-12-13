@@ -1,12 +1,48 @@
 # Data transformation
-We downloaded data as csv files from <website> and transformed it based on our need. We selected the related variables only and transformed them into the format for plotting, by **dplyr** package functions such as `mutate()`, `select()`, `filter()`, `group_by()`, `summarise()` and **tidyr** package functions like `gather()` and `spread()`.
+We downloaded data as csv files from Zillow and transformed it based on our need. We selected the related variables only and transformed them into the format for plotting, by **dplyr** package functions such as `mutate()`, `select()`, `filter()`, `group_by()`, `summarise()` and **tidyr** package functions like `gather()` and `spread()`.
 
 We picked City, State, and median house prices, and used it for our EDA and other analysis.
-In the interactive chart we wanted to explore various data sources in d3 and we used csv and static json created inside the html page.
+In the interactive chart we wanted to explore various data sources in d3 and we used csv and static Json created inside the html page.
 
-As the data itself is in a clean format, there is no necessity for us to transform the data.
+Here's the static Json we created for the interactive d3 Chart:
+```
+var data19 = [
+{group: "San Jose, CA", value: 3090.5},
+{group: "San Francisco, CA", value: 3015},
+{group: "New York, NY", value: 2743.5},
+{group: "Boston, MA", value: 2483.5},
+{group: "Ventura, CA", value: 2436.5},
+{group: "Urban Honolulu, HI", value: 2349.5},
+{group: "Los Angeles-Long Beach-Anaheim, CA", value: 2304.5},
+{group: "San Diego, CA", value: 2230},
+{group: "Stamford, CT", value: 2169.5}
+];
 
-Here is a quick glimpse of the data.
+var data20 = [
+{group: "San Jose, CA", value: 3027},
+{group: "San Francisco, CA", value: 2936.5},
+{group: "New York, NY", value: 2659},
+{group: "Boston, MA", value: 2454.5},
+{group: "Ventura, CA", value: 2495},
+{group: "Urban Honolulu, HI", value: 2356.5},
+{group: "Los Angeles-Long Beach-Anaheim, CA", value: 2322.5},
+{group: "San Diego, CA", value: 2282.5},
+{group: "Stamford, CT", value: 2237.5}];
+
+var data21 = [
+{group: "San Jose, CA", value: 2993.5},
+{group: "San Francisco, CA", value: 2909.5},
+{group: "New York, NY", value: 2667},
+{group: "Boston, MA", value: 2498},
+{group: "Ventura, CA", value: 2746},
+{group: "Urban Honolulu, HI", value: 2487},
+{group: "Los Angeles-Long Beach-Anaheim, CA", value: 2430.5},
+{group: "San Diego, CA", value: 2490.5},
+{group: "Stamford, CT", value: 2421}];  
+```
+As the data itself is in a clean format, there was no necessity for us to transform the data much.
+
+Here is a quick glimpse of the main data.
 
 ```{r, fig.width=20, fig.height=8}
 

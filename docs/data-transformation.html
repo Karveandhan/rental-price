@@ -124,11 +124,45 @@
             <section class="normal" id="section-">
 <div id="data-transformation" class="section level1" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Data transformation</h1>
-<p>We downloaded data as csv files from <website> and transformed it based on our need. We selected the related variables only and transformed them into the format for plotting, by <strong>dplyr</strong> package functions such as <code>mutate()</code>, <code>select()</code>, <code>filter()</code>, <code>group_by()</code>, <code>summarise()</code> and <strong>tidyr</strong> package functions like <code>gather()</code> and <code>spread()</code>.</p>
+<p>We downloaded data as csv files from Zillow and transformed it based on our need. We selected the related variables only and transformed them into the format for plotting, by <strong>dplyr</strong> package functions such as <code>mutate()</code>, <code>select()</code>, <code>filter()</code>, <code>group_by()</code>, <code>summarise()</code> and <strong>tidyr</strong> package functions like <code>gather()</code> and <code>spread()</code>.</p>
 <p>We picked City, State, and median house prices, and used it for our EDA and other analysis.
-In the interactive chart we wanted to explore various data sources in d3 and we used csv and static json created inside the html page.</p>
-<p>As the data itself is in a clean format, there is no necessity for us to transform the data.</p>
-<p>Here is a quick glimpse of the data.</p>
+In the interactive chart we wanted to explore various data sources in d3 and we used csv and static Json created inside the html page.</p>
+<p>Here’s the static Json we created for the interactive d3 Chart:</p>
+<pre><code>var data19 = [
+{group: &quot;San Jose, CA&quot;, value: 3090.5},
+{group: &quot;San Francisco, CA&quot;, value: 3015},
+{group: &quot;New York, NY&quot;, value: 2743.5},
+{group: &quot;Boston, MA&quot;, value: 2483.5},
+{group: &quot;Ventura, CA&quot;, value: 2436.5},
+{group: &quot;Urban Honolulu, HI&quot;, value: 2349.5},
+{group: &quot;Los Angeles-Long Beach-Anaheim, CA&quot;, value: 2304.5},
+{group: &quot;San Diego, CA&quot;, value: 2230},
+{group: &quot;Stamford, CT&quot;, value: 2169.5}
+];
+
+var data20 = [
+{group: &quot;San Jose, CA&quot;, value: 3027},
+{group: &quot;San Francisco, CA&quot;, value: 2936.5},
+{group: &quot;New York, NY&quot;, value: 2659},
+{group: &quot;Boston, MA&quot;, value: 2454.5},
+{group: &quot;Ventura, CA&quot;, value: 2495},
+{group: &quot;Urban Honolulu, HI&quot;, value: 2356.5},
+{group: &quot;Los Angeles-Long Beach-Anaheim, CA&quot;, value: 2322.5},
+{group: &quot;San Diego, CA&quot;, value: 2282.5},
+{group: &quot;Stamford, CT&quot;, value: 2237.5}];
+
+var data21 = [
+{group: &quot;San Jose, CA&quot;, value: 2993.5},
+{group: &quot;San Francisco, CA&quot;, value: 2909.5},
+{group: &quot;New York, NY&quot;, value: 2667},
+{group: &quot;Boston, MA&quot;, value: 2498},
+{group: &quot;Ventura, CA&quot;, value: 2746},
+{group: &quot;Urban Honolulu, HI&quot;, value: 2487},
+{group: &quot;Los Angeles-Long Beach-Anaheim, CA&quot;, value: 2430.5},
+{group: &quot;San Diego, CA&quot;, value: 2490.5},
+{group: &quot;Stamford, CT&quot;, value: 2421}];  </code></pre>
+<p>As the data itself is in a clean format, there was no necessity for us to transform the data much.</p>
+<p>Here is a quick glimpse of the main data.</p>
 <pre><code>##     RegionID         RegionName SizeRank X2014.01 X2014.02 X2014.03 X2014.04
 ## 96    395075       Scranton, PA       95      801      803      804      805
 ## 97    394666     Harrisburg, PA       96      966      964      962      959
