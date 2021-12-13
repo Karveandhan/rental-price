@@ -66,10 +66,11 @@ ggplot(ny_data) +
  theme_minimal(base_size = 30)
 
 ```
+The above graph depicts the spread of the NY Rental prices data. It is clear that most of the data lies between the price 2600 and 2750, which tells us that the NY rental market is not at all cheap, though there are few exeptions. 
 
 ## The change in NY Rental Prices for the same months (Comparing Year 2019 with 2020) 
 
-```{r}
+```{r, fig.width=20, fig.height=8}
 
 ny_data1<-data %>%
   filter(RegionName=='New York, NY')
@@ -102,7 +103,7 @@ ggplot(data=ny_data3,aes(x=label,y=Price, fill=condition))+
 While the usual trend remains increasing as years increase, there are some strange results obtained when comparing the year 2019 and 2020. Comparing the change in price for the same month with its previous year, we observe that the rental price have substantially decreased. This trend has never been observed in any of the previous years. The cause of this impact to most likely due to covid19.But during the recovery stages of COVID19 (November, December), we could observe that the reduction in prices have started decreasing.
 
 ## The change in NY Rental Prices for the same months (Comparing Year 2020 with 2021)
-```{r}
+```{r, fig.width=20, fig.height=8}
 ny_data1<-data %>%
   filter(RegionName=='New York, NY')
 ny_data1<-as.data.frame(t(ny_data1))
@@ -135,7 +136,7 @@ ggplot(data=ny_data3,aes(x=label,y=Price, fill=condition))+
 When compared to the year 2020, we see the rental prices have started increasing. While the pandemic has made a huge negative impact on rental prices in the year 2020, it is clearly visible that the prices are marching back to normal and the trend seems to be carried for every next month as well. So, New York is marching towards the pre-pandemic normal.
 
 ## Comparing the impact of covid on rental pricing within top 5 cities (New York and Boston)
-```{r}
+```{r, fig.width=20, fig.height=8}
 bo_data1<-data %>%
   filter(RegionName=='Boston, MA')
 bo_data1<-as.data.frame(t(bo_data1))
@@ -188,7 +189,7 @@ ggplot()+
 
 ```
 
-```{r}
+```{r, fig.width=20, fig.height=8}
 bo_data1<-data %>%
   filter(RegionName=='Boston, MA')
 bo_data1<-as.data.frame(t(bo_data1))
@@ -241,3 +242,29 @@ ggplot()+
 ```
 
 We observe that the due to covid, there has been a drop in rental pricing for Boston as is for New York. But in New York, there has been a tremendous decrease rapidly when compared to Boston. The decrease began for Boston during May 2020, while it started to decrease in New York by March 2020. And the decrease value for New York is almost more than twice than the drop at Boston. During the road to recovery,Boston's rental price stated increasing by May 2021, while for New York it started by June 2021. Though New York took time to reach this point, now the rental price have increased beyond Boston during the month of October 2021. So, New York has almost reached back to it's pre-covid situation.
+
+## NY Rental Price (2014 - 2021)
+
+```{r, fig.width=20, fig.height=8}
+ny_data0<-data %>%
+  filter(RegionName=='New York, NY')
+ny_data0<-as.data.frame(t(ny_data0))
+
+library(tibble)
+ny_data0 <- tibble::rownames_to_column(ny_data0, "VALUE")
+ny_data0<-as.data.frame(ny_data0[-c(1, 2, 3),])
+ny_data0<-head(ny_data0,-2)
+
+ny_data0$V1<-as.numeric(unlist(ny_data0$V1))
+
+library(ggplot2)
+
+ggplot(ny_data0) +
+ aes(x = VALUE, y = V1) +
+ geom_boxplot(shape = "circle", fill = "#112446") +
+ labs(x = "2014 to 2021", 
+ y = "Rental Price", title = "NY Rental Price (2014 - 2021)") +
+ theme_minimal()
+
+```
+From the above graph, we can clearly see the drop of the rental prices in New York during the pandemic time. And it is also clear that it is again taking a correction and coping up with the old prices.
