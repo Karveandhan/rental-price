@@ -93,8 +93,8 @@ var data21 = [
 {group: "New York, NY", value: 2667},
 {group: "Boston, MA", value: 2498},
 {group: "Ventura, CA", value: 2746},
-{group: "San Diego, CA", value: 2490.5},
 {group: "Urban Honolulu, HI", value: 2487},
+{group: "San Diego, CA", value: 2490.5},
 {group: "Los Angeles-Long Beach-Anaheim, CA", value: 2430.5},
 {group: "Stamford, CT", value: 2421}];    
 
