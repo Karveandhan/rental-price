@@ -268,3 +268,38 @@ ggplot(ny_data0) +
 
 ```
 From the above graph, we can clearly see the drop of the rental prices in New York during the pandemic time. And it is also clear that it is again taking a correction and coping up with the old prices.
+
+## Pre-Pandemic Analysis:
+
+```{r}
+ny_data1<-data %>%
+  filter(RegionName=='New York, NY')
+ny_data1<-as.data.frame(t(ny_data1))
+ny_data1<-as.data.frame(ny_data1[c(52:63),])
+ny_data1<-as.data.frame(as.numeric(unlist(ny_data1)))
+names(ny_data1)[names(ny_data1) == 'as.numeric(unlist(ny_data1))'] <- 'Price'
+
+ny_data2<-data %>%
+  filter(RegionName=='New York, NY')
+ny_data2<-as.data.frame(t(ny_data2))
+ny_data2<-as.data.frame(ny_data2[c(64:75),])
+ny_data2<-as.data.frame(as.numeric(unlist(ny_data2)))
+names(ny_data2)[names(ny_data2) == 'as.numeric(unlist(ny_data2))'] <- 'Price'
+
+ny_data3<-ny_data2-ny_data1
+monlab=c("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")
+ny_data3$label=factor(monlab, levels = monlab)
+ny_data3 <- mutate(ny_data3, condition=if_else(Price>0, "Increase", "Decrease"))
+ny_data3 <- mutate(ny_data3, loc="New York")
+
+ggplot(data=ny_data3,aes(x=label,y=Price, fill=condition))+
+  labs(x = "Months", y = "Price")+
+  geom_col(position = "identity")+
+  theme(axis.text.x=element_text(angle=45, hjust=1))+
+  xlab("Months (Comparing 2018 and 2019)")+
+  ylab("Price Increase or Decrease in $")
+
+
+```
+
+When we compare the prices of New York apartment in 2018 and 2019, it is very clear that there has never been a fall in price for the same month in the consecutive year before the pandemic. And it is the pandemic that has caused the rental prices at New York to fall down during the year 2020. Also, the peak time during which the rental prices hike up is predominant during July (Fall) and the prices decrease when it reaches winter (December).
