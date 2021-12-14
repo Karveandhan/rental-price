@@ -269,7 +269,7 @@ ggplot(ny_data0) +
 ```
 From the above graph, we can clearly see the drop of the rental prices in New York during the pandemic time. And it is also clear that it is again taking a correction and coping up with the old prices.
 
-## Pre-Pandemic Analysis:
+## Pre-Pandemic Analysis($ Inc/Dec YoY for all the months):
 
 ```{r}
 ny_data1<-data %>%
